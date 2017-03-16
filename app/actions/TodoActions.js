@@ -1,5 +1,5 @@
 import dispatcher from "../dispatcher";
-import { CREATE_TODO, TOGGLE_TODO, RELOAD_TODOS, RECEIVE_TODOS, MARK_COMPLETE } from "../constants";
+import { CREATE_TODO, REMOVE_ITEM, TOGGLE_TODO, RELOAD_TODOS, RECEIVE_TODOS, MARK_COMPLETE } from "../constants";
 
 export function createTodo(text) {
     dispatcher.dispatch({
@@ -11,6 +11,13 @@ export function createTodo(text) {
 export function toggleTodo(id) {
     dispatcher.dispatch({
         type: TOGGLE_TODO,
+        id
+    });
+}
+
+export function removeTodo(id) {
+    dispatcher.dispatch({
+        type: REMOVE_ITEM,
         id
     });
 }
@@ -30,7 +37,7 @@ export function reloadTodos() {
             }, {
                 id: 235684679,
                 text: "Flux Demo",
-                complete: false
+                complete: true
             }, {
                 id: 235684676,
                 text: "Redux Demo",

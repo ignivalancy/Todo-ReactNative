@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 import dispatcher from "../dispatcher";
-import { CREATE_TODO, TOGGLE_TODO, RELOAD_TODOS, RECEIVE_TODOS, MARK_COMPLETE } from "../constants";
+import { CREATE_TODO, REMOVE_ITEM, TOGGLE_TODO, RELOAD_TODOS, RECEIVE_TODOS, MARK_COMPLETE } from "../constants";
 
 class TodoStore extends EventEmitter {
 
@@ -11,7 +11,7 @@ class TodoStore extends EventEmitter {
         this.todos = [{
             id: 113464613,
             text: "Introduction",
-            complete: true
+            complete: false
         }, {
             id: 235684679,
             text: "Flux Demo",
@@ -65,6 +65,13 @@ class TodoStore extends EventEmitter {
         this.emit("change");
     }
 
+    removeTodo(tid) {
+
+        this.todos = this.todos.filter(({ id, text, complete }) => tid !== id)
+
+        this.emit("change");
+    }
+
     markAllCompleted() {
 
         this.todos = this.todos.map(({ id, text, complete }) => ({ id, text, complete: true }));
@@ -77,6 +84,11 @@ class TodoStore extends EventEmitter {
             case CREATE_TODO:
                 {
                     this.createTodo(action.text);
+                    break;
+                }
+            case REMOVE_ITEM:
+                {
+                    this.removeTodo(action.id);
                     break;
                 }
             case TOGGLE_TODO:
@@ -92,7 +104,7 @@ class TodoStore extends EventEmitter {
                 }
             case MARK_COMPLETE:
                 {
-                    this.markAllCompleted(action.id);
+                    this.markAllCompleted();
                     break;
                 }
         }
