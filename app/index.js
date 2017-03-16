@@ -1,19 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     View
 } from 'react-native';
 import Title from './views/Title';
 import TaskContainer from './views/TaskContainer';
+import Spinner from 'react-native-loading-spinner-overlay';
+import AppStore from "./stores/AppStore";
 
-const Main = (props) => {
+export default class Main extends Component {
+
+  constructor() {
+      super();
+
+      this.getAppStatus = this.getAppStatus.bind(this);
+
+      this.state = {
+          visible: AppStore.getAppStatus(),
+      };
+  }
+
+  componentWillMount() {
+      AppStore.on("change", this.getAppStatus);
+  }
+
+  componentWillUnmount() {
+      AppStore.removeListener("change", this.getAppStatus);
+  }
+
+  getAppStatus() {
+      this.setState({
+          visible: AppStore.getAppStatus(),
+      });
+  }
+
+  render() {
     
-  return (
-    <View style={styles.container}>
-      <Title/>
-      <TaskContainer/>
-    </View>
-  );
+    return (
+      <View style={styles.container}>
+        <Spinner visible={this.state.visible}/>
+        <Title/>
+        <TaskContainer/>
+      </View>
+    );
+  }
 
 }
 
@@ -24,5 +54,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   }
 });
-
-export default Main;

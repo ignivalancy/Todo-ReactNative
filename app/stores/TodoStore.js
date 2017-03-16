@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 import dispatcher from "../dispatcher";
-import { CREATE_TODO, REMOVE_ITEM, TOGGLE_TODO, RELOAD_TODOS, RECEIVE_TODOS, MARK_COMPLETE } from "../constants";
+import { CREATE_TODO, REMOVE_ITEM, TOGGLE_TODO, RECEIVE_TODOS, MARK_COMPLETE } from "../constants";
 
 class TodoStore extends EventEmitter {
 
