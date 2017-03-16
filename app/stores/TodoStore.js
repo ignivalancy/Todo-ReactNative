@@ -116,4 +116,11 @@ const todoStore = new TodoStore;
 
 dispatcher.register(todoStore.handleActions.bind(todoStore));
 
+// dispatcher.register(function(payload){
+//     console.log(payload)
+//     if(payload.type === CREATE_TODO)
+//         todoStore.createTodo(payload.text)
+
+// });
+
 export default todoStore;
