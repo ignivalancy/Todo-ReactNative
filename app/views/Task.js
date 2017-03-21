@@ -4,17 +4,27 @@ import {
     Text,
     View
 } from 'react-native';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import * as TodoActions from "../actions/TodoActions";
 import Button from '../components/Button';
 
-export default class Task extends Component {
+class Task extends Component {
 
-  toggleTodo(id) {
-      TodoActions.toggleTodo(id);
+  toggleTodo = () => {
+
+      const { toggleTodo } = this.props.actions,
+            { id } = this.props;
+
+      toggleTodo(id);
   }
 
-  removeTodo(id) {
-      TodoActions.removeTodo(id);
+  removeTodo = () => {
+
+      const { removeTodo } = this.props.actions,
+            { id } = this.props;
+
+      removeTodo(id);
   }
 
   render() {
@@ -27,8 +37,8 @@ export default class Task extends Component {
         <Text style={styles.taskText}>
           {text}
         </Text>
-        <Button onClick={this.toggleTodo.bind(this, id)} icon={checkbox} iconSize={21} iconColor="#cc0000"/>
-        <Button onClick={this.removeTodo.bind(this, id)} icon='delete-forever' iconSize={20} iconColor="#003366"/>
+        <Button onClick={this.toggleTodo} icon={checkbox} iconSize={21} iconColor="#cc0000"/>
+        <Button onClick={this.removeTodo} icon='delete-forever' iconSize={20} iconColor="#003366"/>
       </View>
     );
 
@@ -53,3 +63,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
   }
 });
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(TodoActions, dispatch)
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Task)

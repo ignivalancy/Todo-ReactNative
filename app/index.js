@@ -3,45 +3,35 @@ import {
     StyleSheet,
     View
 } from 'react-native';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
 import Title from './views/Title';
 import TaskContainer from './views/TaskContainer';
 import Spinner from 'react-native-loading-spinner-overlay';
-import AppStore from "./stores/AppStore";
+
+const store = createStore(reducer);
 
 export default class Main extends Component {
 
   constructor() {
       super();
 
-      this.getAppStatus = this.getAppStatus.bind(this);
-
       this.state = {
-          visible: AppStore.getAppStatus(),
+          visible: false
       };
-  }
-
-  componentWillMount() {
-      AppStore.on("change", this.getAppStatus);
-  }
-
-  componentWillUnmount() {
-      AppStore.removeListener("change", this.getAppStatus);
-  }
-
-  getAppStatus() {
-      this.setState({
-          visible: AppStore.getAppStatus(),
-      });
   }
 
   render() {
     
     return (
-      <View style={styles.container}>
-        <Spinner visible={this.state.visible}/>
-        <Title/>
-        <TaskContainer/>
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Spinner visible={this.state.visible}/>
+          <Title/>
+          <TaskContainer/>
+        </View>
+      </Provider>
     );
   }
 

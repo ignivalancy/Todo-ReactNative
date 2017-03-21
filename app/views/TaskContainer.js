@@ -4,48 +4,15 @@ import {
     Text,
     StyleSheet
 } from 'react-native';
-import TodoStore from "../stores/TodoStore";
+import { connect } from 'react-redux'
 import Task from './Task';
 
-export default class TaskContainer extends Component {
-
-  constructor() {
-      super();
-
-      this.getTodos = this.getTodos.bind(this);
-
-      this.state = {
-          todos: TodoStore.getAll(),
-      };
-  }
-
-  componentWillMount() {
-      TodoStore.on("change", this.getTodos);
-  }
-
-  componentWillUnmount() {
-      TodoStore.removeListener("change", this.getTodos);
-  }
-
-  getTodos() {
-      this.setState({
-          todos: TodoStore.getAll(),
-      });
-  }
-
-  render() {
-
-    const { todos } = this.state;
-    
-    return (
-      <ScrollView>
-        {todos.length === 0 && <Text style={styles.noData}>No Data</Text>}
-      	{todos.map((data) => <Task key={data.id} {...data}/>)}
-      </ScrollView>
-    );
-  }
-
-}
+const TaskContainer = ({ todos }) => (
+  <ScrollView>
+      {todos.length === 0 && <Text style={styles.noData}>No Data</Text>}
+      {todos.map((data) => <Task key={data.id} {...data}/>)}
+  </ScrollView>
+)
 
 const styles = StyleSheet.create({
   noData: {
@@ -56,3 +23,11 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   }
 });
+
+const mapStateToProps = state => ({
+  todos: state.todos
+})
+
+export default connect(
+  mapStateToProps
+)(TaskContainer)
