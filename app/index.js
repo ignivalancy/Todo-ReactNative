@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginVertical: 25,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#FFF'
   }
 });

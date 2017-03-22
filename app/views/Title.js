@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     alignItems: 'center',
     borderBottomWidth: 2,
-    borderColor: '#174844'
+    borderColor: 'grey'
   },
   title: {
     flex: 1,

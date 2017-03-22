@@ -37,8 +37,11 @@ class Task extends Component {
         <Text style={styles.taskText}>
           {text}
         </Text>
-        <Button onClick={this.toggleTodo} icon={checkbox} iconSize={21} iconColor="#cc0000"/>
-        <Button onClick={this.removeTodo} icon='delete-forever' iconSize={20} iconColor="#003366"/>
+        <View style={styles.actionButtonBox}>
+          <Button onClick={this.toggleTodo} icon={checkbox} iconSize={21} iconColor="#003366"/>
+          <Button icon={'pen'} iconSize={21} iconColor="#343434"/>
+          <Button onClick={this.removeTodo} icon='delete-forever' iconSize={20} iconColor="#3a1f1f"/>
+        </View>
       </View>
     );
 
@@ -49,19 +52,27 @@ class Task extends Component {
 const styles = StyleSheet.create({
   taskBox: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 5,
-    padding: 7,
     borderBottomWidth: 2,
-    borderColor: '#47c266'
+    borderColor: 'grey',
+    backgroundColor: '#242424'
   },
   taskText: {
     flex: 1,
-    color: '#333333',
+    backgroundColor: 'white',
+    color: '#242424',
     textAlign: 'left',
-    fontSize: 16,
-  }
+    paddingVertical: 5,
+    paddingLeft: 3,
+    marginLeft: 2,
+    fontSize: 16
+  },
+  actionButtonBox: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: 'lightgrey',
+    paddingTop: 2
+  },
 });
 
 const mapDispatchToProps = dispatch => ({

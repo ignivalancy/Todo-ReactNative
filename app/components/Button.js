@@ -19,7 +19,7 @@ Button.PropTypes = {
   icon: PropTypes.string.isRequired,
   iconSize: PropTypes.number.isRequired,
   iconColor: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func
 }
 
 export default Button;

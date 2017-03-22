@@ -25,7 +25,7 @@ export default function configureStore() {
     console.log("store obj", store);
 
     // store.dispatch({ })
-    // store.dispatch({ type: "RELOAD_TODOS" })
+    // store.dispatch({ type: "RECEIVE_TODOS" })
 
     persistStore(store, { storage: AsyncStorage })
 
