@@ -3,14 +3,13 @@ import {
     StyleSheet,
     View
 } from 'react-native';
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
-import Title from './views/Title';
-import TaskContainer from './views/TaskContainer';
-import Spinner from 'react-native-loading-spinner-overlay';
+import configureStore from './configureStore'
+import Title from './views/Title'
+import TaskContainer from './views/TaskContainer'
+import Spinner from 'react-native-loading-spinner-overlay'
 
-const store = createStore(reducer);
+const store = configureStore();
 
 export default class Main extends Component {
 
