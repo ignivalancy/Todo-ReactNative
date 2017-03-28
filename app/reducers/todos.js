@@ -1,4 +1,4 @@
-import { CREATE_TODO, REMOVE_ITEM, TOGGLE_TODO, COMPLETE_ALL, CLEAR_COMPLETED, RELOAD_TODOS, RECEIVE_TODOS } from "../constants/actions";
+import { CREATE_TODO, EDIT_TODO, REMOVE_ITEM, TOGGLE_TODO, COMPLETE_ALL, CLEAR_COMPLETED, RELOAD_TODOS, RECEIVE_TODOS } from "../constants/actions";
 
 const initialState = [{
     id: 113464613,
@@ -31,6 +31,7 @@ const initialState = [{
 }]
 
 export default function todos(state = initialState, action) {
+    // console.log('todos reducer', state, action);
     switch (action.type) {
         case CREATE_TODO:
             return [{
@@ -40,6 +41,12 @@ export default function todos(state = initialState, action) {
                 },
                 ...state
             ]
+
+        case EDIT_TODO:
+            return state.map(todo =>
+                todo.id === action.id ? {...todo, text: action.text } :
+                todo
+            )
 
         case REMOVE_ITEM:
             return state.filter(todo =>

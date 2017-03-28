@@ -17,6 +17,10 @@ class Title extends Component {
       const { dispatch } = this.props;
       dispatch(TodoActions.reloadTodo());
 
+      setTimeout(() => {
+        dispatch(TodoActions.receiveTodo())
+      }, 1000);
+
   }
 
   completeAll = () => {

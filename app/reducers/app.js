@@ -6,6 +6,7 @@ const initialState = {
 }
 
 export default function app(state = initialState, action) {
+	// console.log('app reducer', state, action);
     switch (action.type) {
         case RELOAD_TODOS:
             return {...state, isLoading: true }

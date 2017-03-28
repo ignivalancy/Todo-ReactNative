@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
-    View
+    View,
+    AlertIOS
 } from 'react-native';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -13,18 +14,42 @@ class Task extends Component {
 
   toggleTodo = () => {
 
-      const { toggleTodo } = this.props.actions,
-            { id } = this.props;
+      const { toggleTodo, id } = this.props;
 
       toggleTodo(id);
   }
 
   removeTodo = () => {
 
-      const { removeTodo } = this.props.actions,
-            { id } = this.props;
+      const { removeTodo, id } = this.props;
 
       removeTodo(id);
+  }
+
+  handleSave = text => {
+
+    if (text.length !== 0) {
+      const { editTodo, id } = this.props;
+      editTodo(id, text);
+    }
+
+  }
+
+  editTodo = () => {
+
+     const { text } = this.props
+
+      AlertIOS.prompt(
+          'Edit new Task',
+          'Edit your next task in the list',
+          [
+            {text: 'Cancel', style: 'cancel'},
+            {text: 'Save', onPress:this.handleSave},
+          ],
+          'plain-text',
+          text
+      );
+      
   }
 
   render() {
@@ -39,7 +64,7 @@ class Task extends Component {
         </Text>
         <View style={styles.actionButtonBox}>
           <Button onClick={this.toggleTodo} icon={checkbox} iconSize={21} iconColor="#003366"/>
-          <Button icon={'pen'} iconSize={21} iconColor="#343434"/>
+          <Button onClick={this.editTodo} icon={'pen'} iconSize={21} iconColor="#343434"/>
           <Button onClick={this.removeTodo} icon='delete-forever' iconSize={20} iconColor="#3a1f1f"/>
         </View>
       </View>
@@ -62,8 +87,8 @@ const styles = StyleSheet.create({
     color: '#242424',
     textAlign: 'left',
     paddingVertical: 5,
-    paddingLeft: 3,
-    marginLeft: 2,
+    paddingLeft: 5,
+    marginLeft: 7,
     fontSize: 16
   },
   actionButtonBox: {
@@ -76,7 +101,7 @@ const styles = StyleSheet.create({
 });
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
+    ...bindActionCreators(TodoActions, dispatch)
 })
 
 export default connect(

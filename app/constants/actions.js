@@ -4,6 +4,7 @@
  */
  
 export const CREATE_TODO = 'CREATE_TODO';
+export const EDIT_TODO = 'EDIT_TODO';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 

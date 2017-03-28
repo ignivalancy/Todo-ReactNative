@@ -4,6 +4,11 @@ import { AsyncStorage, Platform } from 'react-native'
 import devToolsEnhancer from 'remote-redux-devtools';
 import reducer from './reducers'
 
+const logger = (store) => (next) => (action) => {
+  console.log("Action Logged", action);
+  return next(action);
+};
+
 export default function configureStore() {
 
     const store = createStore(
@@ -14,7 +19,8 @@ export default function configureStore() {
                 name: Platform.OS,
                 hostname: 'localhost',
                 port: 5678
-            })
+            }),
+            applyMiddleware(logger)
         )
     )
 
