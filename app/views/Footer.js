@@ -10,14 +10,14 @@ import { connect } from 'react-redux'
 import Button from '../components/Button';
 import * as TodoActions from "../actions/TodoActions";
 
-class Title extends Component {
+class Footer extends Component {
 
   reloadTodo = () => {
 
       const { dispatch } = this.props;
       dispatch(TodoActions.reloadTodo());
 
-      // setTimeout(() => {
+      // fetch('xyx', () => {
       //   dispatch(TodoActions.receiveTodo())
       // }, 1000);
 
@@ -51,12 +51,9 @@ class Title extends Component {
 
     return (
       <View style={styles.titleBox}>
-        <Text style={styles.title}>
-          Flux App
-        </Text>
-        <Button onClick={this.reloadTodo} icon="reload" iconSize={25} iconColor="#7d92da"/>
-        <Button onClick={this.completeAll} icon="notification-clear-all" iconSize={25} iconColor="#7d92da"/>
-        <Button onClick={this.createTodo} icon="plus" iconSize={25} iconColor="#7d92da"/>
+        <Button onClick={this.reloadTodo} icon="reload" iconSize={25} iconColor="#2d2a26"/>
+        <Button onClick={this.completeAll} icon="notification-clear-all" iconSize={25} iconColor="#2d2a26"/>
+        <Button onClick={this.createTodo} icon="plus" iconSize={25} iconColor="#2d2a26"/>
       </View>
     );
   }
@@ -66,17 +63,12 @@ class Title extends Component {
 const styles = StyleSheet.create({
   titleBox: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     padding: 7,
     backgroundColor: '#f0f0f0',
     alignItems: 'center',
-    borderBottomWidth: 2,
-    borderColor: 'grey'
-  },
-  title: {
-    flex: 1,
-    fontSize: 20,
-    textAlign: 'left',
-    fontWeight: '400'
+    borderTopWidth: 2,
+    borderColor: '#2d2a26'
   }
 });
 
@@ -84,4 +76,4 @@ const styles = StyleSheet.create({
 //     actions: bindActionCreators(TodoActions, dispatch)
 // })
 
-export default connect()(Title)
+export default connect()(Footer)

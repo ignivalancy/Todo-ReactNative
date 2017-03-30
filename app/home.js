@@ -4,26 +4,35 @@ import {
     View
 } from 'react-native'
 import { connect } from 'react-redux'
-import Title from './views/Title'
+import Footer from './views/Footer'
 import TaskContainer from './views/TaskContainer'
 import Spinner from 'react-native-loading-spinner-overlay'
 
-const Layout = ({ visible }) => {
+class HomeScreen extends Component {
 
-  return (
-    <View style={styles.container}>
-      <Spinner visible={visible} />
-      <Title/>
-      <TaskContainer/>
-    </View>
-  )
+  static navigationOptions = {
+    title: 'Welcome',
+  };
+
+  render() {
+    const { visible } = this.props;
+
+    return (
+      <View style={styles.container}>
+        <Spinner visible={visible} />
+        <TaskContainer/>
+        <Footer/>
+      </View>
+    );
+
+  }
 
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: 25,
+    // marginVertical: 25,
     backgroundColor: '#FFF'
   }
 });
@@ -34,4 +43,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps
-)(Layout)
+)(HomeScreen)

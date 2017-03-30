@@ -63,9 +63,9 @@ class Task extends Component {
           {text}
         </Text>
         <View style={styles.actionButtonBox}>
-          <Button onClick={this.toggleTodo} icon={checkbox} iconSize={21} iconColor="#003366"/>
-          <Button onClick={this.editTodo} icon={'pen'} iconSize={21} iconColor="#343434"/>
-          <Button onClick={this.removeTodo} icon='delete-forever' iconSize={20} iconColor="#3a1f1f"/>
+          <Button onClick={this.toggleTodo} icon={checkbox} iconSize={21} iconColor="#009d4f"/>
+          <Button onClick={this.editTodo} icon={'pen'} iconSize={21} iconColor="#31698a"/>
+          <Button onClick={this.removeTodo} icon='delete-forever' iconSize={20} iconColor="#a8353a"/>
         </View>
       </View>
     );
