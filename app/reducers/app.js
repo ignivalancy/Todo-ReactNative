@@ -1,5 +1,5 @@
 
-import { RELOAD_TODOS, RECEIVE_TODOS } from "../constants/actions";
+import { TOGGEL_LOADER } from "../constants/actions";
 
 const initialState = {
     isLoading: false
@@ -8,11 +8,8 @@ const initialState = {
 export default function app(state = initialState, action) {
 	// console.log('app reducer', state, action);
     switch (action.type) {
-        case RELOAD_TODOS:
-            return {...state, isLoading: true }
-
-        case RECEIVE_TODOS:
-            return {...state, isLoading: false }
+        case TOGGEL_LOADER:
+            return {...state, isLoading: !state.isLoading }
             
         default:
             return state

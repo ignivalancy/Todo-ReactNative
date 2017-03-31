@@ -1,20 +1,15 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { StackNavigator } from 'react-navigation';
 import configureStore from './configureStore'
-import Home from './home'
+import Root from './root'
 
 const store = configureStore();
-
-const Navigator = StackNavigator({
-  Home: { screen: Home },
-});
 
 const Main = () => {
 
   return (
       <Provider store={store}>
-        <Navigator/>
+        <Root/>
       </Provider>
     )
     
