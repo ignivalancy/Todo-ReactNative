@@ -6,7 +6,7 @@ import Home from './home'
 
 const store = configureStore();
 
-const SimpleApp = StackNavigator({
+const Navigator = StackNavigator({
   Home: { screen: Home },
 });
 
@@ -14,7 +14,7 @@ const Main = () => {
 
   return (
       <Provider store={store}>
-        <SimpleApp/>
+        <Navigator/>
       </Provider>
     )
     

@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
     StyleSheet,
     Text,
     View,
     AlertIOS
-} from 'react-native';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as TodoActions from "../actions/TodoActions";
-import Button from '../components/Button';
+} from 'react-native'
+import Button from '../components/Button'
 
-class Task extends Component {
+export default class Task extends Component {
 
   toggleTodo = () => {
 
@@ -99,12 +96,3 @@ const styles = StyleSheet.create({
     paddingTop: 2
   },
 });
-
-const mapDispatchToProps = dispatch => ({
-    ...bindActionCreators(TodoActions, dispatch)
-})
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Task)

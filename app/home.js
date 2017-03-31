@@ -8,25 +8,20 @@ import Footer from './views/Footer'
 import TaskContainer from './views/TaskContainer'
 import Spinner from 'react-native-loading-spinner-overlay'
 
-class HomeScreen extends Component {
+const HomeScreen = ({ visible }) => {
 
-  static navigationOptions = {
-    title: 'Welcome',
-  };
-
-  render() {
-    const { visible } = this.props;
-
-    return (
+  return (
       <View style={styles.container}>
         <Spinner visible={visible} />
         <TaskContainer/>
         <Footer/>
       </View>
-    );
+  )
 
-  }
+}
 
+HomeScreen.navigationOptions = {
+    title: 'Welcome',
 }
 
 const styles = StyleSheet.create({
