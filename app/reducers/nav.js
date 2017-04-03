@@ -14,16 +14,16 @@ const initialState = {
 
 export default function nav(state = initialState, action) {
 
-    // console.log('nav reducer', state, action);
+    console.log('nav reducer', state, action);
     // console.log('AppNavigator nav ', AppNavigator.router.getStateForAction(action, state))
     // const newState = AppNavigator.router.getStateForAction(action, state);
 
     switch (action.type) {
         case REHYDRATE:
-            if (action.payload.user && !action.payload.user.isLogin)
-                return AppNavigator.router.getStateForAction(action, initialState)
-            else
+            if (action.payload.user && action.payload.user.isLogin)
                 return AppNavigator.router.getStateForAction(action, initialLoginState)
+            else
+                return AppNavigator.router.getStateForAction(action, initialState)
         case LOGGED_IN:
             return AppNavigator.router.getStateForAction(action, initialLoginState)
         case LOG_OUT:
