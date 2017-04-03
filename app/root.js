@@ -3,22 +3,15 @@ import {
     StyleSheet,
     View
 } from 'react-native'
-import { StackNavigator } from 'react-navigation';
 import Loader from './loader'
-import Login from './login'
-import Home from './home'
-
-const Navigator = StackNavigator({
-  Home: { screen: Home },
-	Login: { screen: Login }
-});
+import AppNavigator from './navigator'
 
 const Root = ({ visible }) => {
 
   return (
       <View style={styles.container}>
       	<Loader/>
-        <Navigator/>
+        <AppNavigator/>
       </View>
     )
     

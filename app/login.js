@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import * as LoginActions from "./actions/LoginActions";
 
 const LoginScreen = ({ navigation: { navigate }, login }) => {
-console.log(login)
+
   return (
       <View style={styles.container}>
         <Text style={{fontSize: 20}} onPress={login}>

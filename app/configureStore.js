@@ -34,7 +34,7 @@ export default function configureStore() {
     // store.dispatch({ })
     // store.dispatch({ type: "RECEIVE_TODOS" })
 
-    persistStore(store, { blacklist: ['app'], storage: AsyncStorage })
+    persistStore(store, { blacklist: ['app', 'nav'], storage: AsyncStorage })
 
     return store
 }
