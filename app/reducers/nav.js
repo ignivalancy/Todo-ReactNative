@@ -5,16 +5,16 @@ import { REHYDRATE } from 'redux-persist/constants'
 
 const initialState = {
         index: 0,
-        routes: [{ key: 'Login', routeName: 'Login' }, { key: 'Home', routeName: 'Home' }]
+        routes: [{ key: 'Login', routeName: 'Login' }]
     },
     initialLoginState = {
-        index: 1,
-        routes: [{ key: 'Login', routeName: 'Login' }, { key: 'Home', routeName: 'Home' }]
+        index: 0,
+        routes: [{ key: 'Home', routeName: 'Home' }]
     };
 
 export default function nav(state = initialState, action) {
 
-    console.log('nav reducer', state, action);
+    // console.log('nav reducer', state, action);
     // console.log('AppNavigator nav ', AppNavigator.router.getStateForAction(action, state))
     // const newState = AppNavigator.router.getStateForAction(action, state);
 
