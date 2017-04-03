@@ -1,5 +1,5 @@
 import { NavigationActions } from 'react-navigation'
-import { TOGGEL_LOADER, LOGGED_IN } from "../constants/actions"
+import { TOGGEL_LOADER, LOGGED_IN, LOG_OUT } from "../constants/actions"
 
 export const toggelLoader = () => ({ type: TOGGEL_LOADER })
 export const loginSuccess = () => ({ type: LOGGED_IN })
@@ -17,3 +17,4 @@ export const login = () => {
 
     }
 }
+export const logOut = () => ({ type: LOG_OUT })

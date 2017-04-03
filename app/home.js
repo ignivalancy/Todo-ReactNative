@@ -18,9 +18,9 @@ const HomeScreen = () => {
 
 }
 
-HomeScreen.navigationOptions = {
-    title: 'Welcome',
-}
+// HomeScreen.navigationOptions = {
+//     title: 'Welcome',
+// }
 
 const styles = StyleSheet.create({
   container: {

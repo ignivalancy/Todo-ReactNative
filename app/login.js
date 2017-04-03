@@ -20,9 +20,9 @@ const LoginScreen = ({ navigation: { navigate }, login }) => {
 
 }
 
-LoginScreen.navigationOptions = {
-    title: 'Todo App'
-}
+// LoginScreen.navigationOptions = {
+//     title: 'Todo App'
+// }
 
 const styles = StyleSheet.create({
   container: {

@@ -17,3 +17,4 @@ export const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
 export const RECEIVE_TODOS = 'RECEIVE_TODOS';
 
 export const LOGGED_IN = 'LOGGED_IN';
+export const LOG_OUT = 'LOG_OUT';

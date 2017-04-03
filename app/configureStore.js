@@ -16,7 +16,7 @@ export default function configureStore() {
         reducer,
         compose(
             autoRehydrate(),
-            applyMiddleware(logger, thunk),
+            applyMiddleware(thunk),
             devToolsEnhancer({
                 name: Platform.OS,
                 hostname: 'localhost',
