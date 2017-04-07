@@ -5,10 +5,19 @@ import {
 import { StackNavigator, addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux'
 import * as LoginActions from "./actions/LoginActions";
+import Loader from './loader'
 import Login from './login'
 import Home from './home'
 
 const AppNavigator = StackNavigator({
+    Loader: { 
+        screen: Loader,
+        navigationOptions: {
+            header: {
+                style: { position: "absolute" }
+            }
+        }
+    },
     Login: {
         screen: Login,
         path: 'login',

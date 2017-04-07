@@ -3,14 +3,14 @@ import {
     StyleSheet,
     View
 } from 'react-native'
-import Loader from './loader'
+import Progress from './progress'
 import AppNavigator from './navigator'
 
 const Root = ({ visible }) => {
 
   return (
       <View style={styles.container}>
-      	<Loader/>
+      	<Progress/>
         <AppNavigator/>
       </View>
     )

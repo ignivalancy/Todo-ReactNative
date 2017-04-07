@@ -5,11 +5,21 @@ import { REHYDRATE } from 'redux-persist/constants'
 
 const initialState = {
         index: 0,
-        routes: [{ key: 'Login', routeName: 'Login' }]
+        routes: [
+            { key: 'Loader', routeName: 'Loader' }
+        ]
     },
+    initialHomeState = {
+        index: 0,
+        routes: [
+            { key: 'Home', routeName: 'Home' }
+        ]
+    }
     initialLoginState = {
         index: 0,
-        routes: [{ key: 'Home', routeName: 'Home' }]
+        routes: [
+            { key: 'Login', routeName: 'Login' }
+        ]
     };
 
 export default function nav(state = initialState, action) {
@@ -21,13 +31,13 @@ export default function nav(state = initialState, action) {
     switch (action.type) {
         case REHYDRATE:
             if (action.payload.user && action.payload.user.isLogin)
-                return AppNavigator.router.getStateForAction(action, initialLoginState)
+                return AppNavigator.router.getStateForAction(action, initialHomeState)
             else
-                return AppNavigator.router.getStateForAction(action, initialState)
+                return AppNavigator.router.getStateForAction(action, initialLoginState)
         case LOGGED_IN:
-            return AppNavigator.router.getStateForAction(action, initialLoginState)
+            return AppNavigator.router.getStateForAction(action, initialHomeState)
         case LOG_OUT:
-            return AppNavigator.router.getStateForAction(action, initialState)
+            return AppNavigator.router.getStateForAction(action, initialLoginState)
         default:
             return AppNavigator.router.getStateForAction(action, state)
     }

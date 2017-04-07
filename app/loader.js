@@ -1,14 +1,28 @@
-import React, { Component } from 'react'
+/*
+ * @file: Loader.js
+ * @description: Loader for the application.
+ * @date: 15.12.2016
+ * @author: Lancy Goyal
+ * */
+
+'use strict';
+
+import React, { Component } from 'react';
 import {
-    View
-} from 'react-native'
-import { connect } from 'react-redux'
-import Spinner from 'react-native-loading-spinner-overlay'
+  View,
+  ActivityIndicator
+} from 'react-native';
 
-const mapStateToProps = state => ({
-  visible: state.app.isLoading
-})
+class Loader extends Component {
+  render() {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 
-export default connect(
-  mapStateToProps
-)(Spinner)
+        <ActivityIndicator size="large"/>
+        
+      </View>
+    );
+  }
+}
+
+module.exports = Loader;
